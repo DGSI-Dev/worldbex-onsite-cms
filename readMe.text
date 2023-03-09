@@ -1,0 +1,30 @@
+TO RUN LOCAL HTTPS
+	* RUN Local Server
+	 - npm run start
+
+	* OPEN NEW TERMINAL
+	* RUN Local HTTPS
+	 run "run local HTTPS.bat"
+	https://
+
+
+PORT 9012
+LINKS 
+ registration : /onsite-registration
+ survey/Prize : /survey
+ Prize CMS : /surveyadmin
+
+
+PRINTING GUIDE
+	* Postek Q8
+ 		add 0.1" left margin
+	* Postek C168/200s
+ 		NO margin
+		
+TEST PRINT with sticker template
+1. run application
+2. open /onsite-registration
+2. f11 then open console
+3. paste this code
+  printSticker({qrCode: 'sl876e23g847s8324', firstName:"Christopher", lastName: 'Dungaran', companyName: 'Dynamic Global Soft Inc.'})
+4. enter

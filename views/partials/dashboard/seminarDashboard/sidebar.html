@@ -1,0 +1,83 @@
+<style>
+  .activeSideBar{
+    background-color:  #df731be3;
+    border-radius: 5px;
+    margin: 3px;
+  }
+  .activeSideBarChild{
+    background-color:  #b35102e3;
+    border-radius: 5px;
+    margin: 3px;
+  }
+  .activeSideBar i, .activeSideBar p {
+    color: white;
+  }
+    .img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center; 
+    }
+
+    .bg-wrap {
+      width: 100%;
+      position: relative;
+      z-index: 0; 
+    }
+    .bg-wrap:after {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      background: #000;
+      opacity: .3; }
+    .bg-wrap .user-logo .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-bottom: 10px; 
+    }
+    .bg-wrap .user-logo h3 {
+      color: #fff;
+      font-size: 18px; 
+    }
+
+</style>
+<aside class="main-sidebar sidebar-light-primary elevation-4" style=" left: 0">
+    <div class="sidebar mt-0 p-0">
+      <div class="user-panel pb-3 mb-3 mt-3 d-flex">
+        <div class="info w-100">
+          <div class="d-block d-md-none">
+            <img src="../{{logo}}" alt="" style="width: 100%;">
+            <hr>
+          </div>
+          <div class="w-100">
+            <span class="h5 text-capitalize fullName font-weight-bold text-wrap"><span class="fName text-capitalize">{{name}}</span></span>
+            <span class="myEmail d-inline-block text-truncate"" style="max-width: 235px; ">{{email}}</span>
+          </div>
+        </div>
+      </div>
+      <span id="uid" hidden>{{id}}</span>
+      <span id="pageName" hidden>{{pageName}}</span>
+      <span id="pagechild" hidden>{{pagechild}}</span>
+    
+      <!-- Sidebar Menu -->
+      <nav class="sidenav">
+        <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="/dashboard/seminar/events" class="nav-link py-3 text-muted">
+              <i class="nav-icon fas fa-calendar-alt"></i>
+              <p>
+                Seminars
+              </p>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+      
+    </div>
+</aside>

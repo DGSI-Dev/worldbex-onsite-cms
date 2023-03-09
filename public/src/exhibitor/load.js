@@ -1,0 +1,9 @@
+$(document).ready(function(){
+  $.when(
+    $.ajax("/src/utilities/basicInfoValidation.js"),
+  ).then(function(){
+    $.when(
+      $.ajax("/src/exhibitor/register.js"),
+    ) 
+  })
+})

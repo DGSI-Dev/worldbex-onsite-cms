@@ -1,0 +1,2 @@
+var currentEventId = ''
+var currentUserId = ''

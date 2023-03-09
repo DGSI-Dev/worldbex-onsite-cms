@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pageName}}</title>
+  <link rel="icon" href="../{{logoText}}">
+  <link href="plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="plugins/fontawesome/all.min.css" rel="stylesheet" />
+</head>
+<style>
+  .navbar-nav .nav-item .active{
+    background-color: white;
+    color: #df731b;
+    border-radius: 15px;
+  }
+  .navbar-nav .nav-item a{
+    color: white;
+  }
+  
+</style>
+<body class="bg-light">
+
+  <nav class=" navbar navbar-expand " style="background-color:  #df731b;">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <img src="../{{logo}}" class="d-none d-sm-none d-md-flex" style="max-height: 4vh;" alt="">
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="/onsite-guests">Guests</a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="/onsite-registration">Registration</a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="/onsite-manualsync">Manual Syncing</a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link active" aria-current="page" href="/onsite-customprint">Manual Print</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <section class="pt-4">
+    <div class="container headerTitle">
+      <center>
+        <div class="d-block d-md-none">
+          <img src="{{logo}}" alt="" style="width: 100%;">
+          <hr>
+        </div>
+        <img src="/img/raw/wbex-date.png" class="w-50" alt="">
+      </center>
+      <div class="my-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <center>
+              <h2>
+                CUSTOM PRINT
+                <div class="col-sm-6 mx-auto"
+                  style="border-bottom: solid #c75b03b9 3px; min-width: 200px; max-width: 300px "></div>
+              </h2>
+            </center>
+            <hr>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Font Weight</label>
+                    <select class="form-control" id="fontWeight">
+                      <option value="500" selected>500</option>
+                      <option value="600">600</option>
+                      <option value="700">700</option>
+                      <option value="800">800</option>
+                      <option value="900">900</option>
+                      <option value="bold">bold</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Font Size</label>
+                    <input type="number" class="form-control" id="fontSize" value="30">
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-label">Text Font weight</label>
+                      <input type="text" class="form-control" name="text" 
+                        placeholder="Enter Sticker Text" required>
+                    </div>
+                  </div>
+              </div>
+              
+              <br>
+              <div class="d-flex justify-content-between">
+                <button type="reset" class="btn btn-lg print mb-3 w-100 m-2"
+                  style="border: 1px solid #df731b">PRINT</button>
+              </div>
+          </div>
+        </div>
+
+        <center>
+          <h2>
+            TEXT PREVIEW
+            <div class="col-sm-6 mx-auto mb-3" style="border-bottom: solid #c75b03b9 3px; min-width: 200px; max-width: 300px ">
+            </div>
+            <div>
+              <div id="parent">
+                <center>
+                  <span id="child" style=" word-wrap: break-word;"  >
+                  </span> 
+                </center>
+              </div>
+            </div>
+          </h2>
+        </center>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- <div style="margin-bottom: 200px;"></div> -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jquery validation -->
+  <script src="plugins/sweetalert2.js"></script>
+  <script src="plugins/printThis.js"></script>
+
+  <script>
+    $('[name="text" ]').focus()
+    let el_fontWeight = $("#fontWeight")
+    let el_fontSize = $("#fontSize")
+
+    el_fontWeight.on('change', function(){
+      let val = $(this).val()
+       $("#child").css('font-weight',val)
+    })
+
+    el_fontSize.on('input change', function(){
+      let val = $(this).val()
+       $("#child").css('font-size',val+'pt')
+       $("#child").css('line-height',(val - 1) + 'pt')
+    })
+    el_fontWeight.change()
+    el_fontSize.change()
+
+    $('[name="text"]').on('input change', function(){
+      $("#child").text($(this).val())
+      
+    })
+
+    $('.print').on('click', function(){
+      let text = $('[name="text"]').val()
+      if(text){ 
+        $('#parent').printThis({
+          // importCSS: true,
+          // importStyle: true,
+          removeInlineSelector: "*",
+          removeInline: false,
+          printDelay: 300
+        })
+      }else{
+        Swal.fire('Empty Text','Type a text to print', warning)
+      }
+    })
+  </script>
+</body>
+
+</html>

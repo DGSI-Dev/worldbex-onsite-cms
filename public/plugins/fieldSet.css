@@ -1,0 +1,21 @@
+  .groupBox{
+    border: 1px solid lightgray; 
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-radius: 6px;
+    margin: 5px 0 5px 0;
+  }
+  .groupBoxHeader{
+    padding: 0.2em 0.5em; 
+    border: 1px solid lightgray; 
+    font-size: 100%; 
+    text-align: center; 
+    letter-spacing: 2px;
+    /* width: 50%;  */
+    border-radius: 6px;
+    background-color: rgba(192, 1, 1, 0.932);
+    color: white;
+    font-weight: bold;
+  }

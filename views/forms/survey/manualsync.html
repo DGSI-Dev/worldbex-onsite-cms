@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{pageName}}</title>
+  <link rel="icon" href="../{{logoText}}">
+  <!-- <link rel="stylesheet" href="../plugins/dist/css/adminlte.min.css"> -->
+  <link href="plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="plugins/fontawesome/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+</head>
+<style>
+  .navbar-nav .nav-item .active {
+    background-color: white;
+    color: #df731b;
+    border-radius: 15px;
+  }
+
+  .navbar-nav .nav-item a {
+    color: white;
+  }
+</style>
+
+<body class="bg-light">
+
+  <nav class=" navbar navbar-expand " style="background-color:  #df731b;">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <img src="../{{logo}}" class="d-none d-sm-none d-md-flex" style="max-height: 4vh;" alt="">
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="/survey">Survey</a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link active" aria-current="page" href="/manualsync">Manual Syncing</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="pt-4">
+    <div class="container-fluid headerTitle">
+      <center>
+        <div class="d-block d-md-none">
+          <img src="{{logo}}" alt="" style="width: 100%;">
+          <hr>
+        </div>
+        <img src="/img/raw/wbex-date.png" class="w-50" alt="">
+      </center>
+      <div class="my-3">
+        <center>
+          <h2 style="font-weight: 900;">Search Guest from Local Server</h2>
+        </center>
+        <hr>
+        <div class="row mt-3">
+          <form id="searchLocal" class="col-md-9 row">
+            <div class="form-group col-md-4 mb-2">
+              <label for="">First Name</label>
+              <input type="text" class="form-control" name="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-4 mb-2">
+              <label for="">Last Name</label>
+              <input type="text" class="form-control" name="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group col-md-4 mb-2">
+              <label for="">Type QR Code</label>
+              <input type="text" name="qrCode" class="form-control" placeholder="QR CODE">
+            </div>
+            <div class="col-md-12">
+              <div class="d-flex justify-content-middle">
+                <button type="reset" class="btn btn-outline-danger"><i class="fa fa-eraser fa-lg"> </i>
+                  Clear</button> &nbsp;
+                <button type="submit" class="btn btn-outline-info"><i class="fas fa-search fa-lg"></i> Search</button>
+              </div>
+            </div>
+          </form>
+          <form id="searchLocalScanQr" class="col-md-3">
+            <div class="form-group mb-2">
+              <label for="">SCAN QR CODE</label>
+              <input type="text" name="qrCode" class="form-control" placeholder="SCAN QR CODE">
+            </div>
+            <div class="col-md-12">
+              <div class="d-flex justify-content-middle">
+                <button type="reset" class="btn btn-outline-danger"><i class="fa fa-eraser fa-lg"> </i>
+                  Clear</button> &nbsp;
+                <button type="submit" class="btn btn-outline-info"><i class="fas fa-search fa-lg"></i> Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr>
+        <div class="table-responsive p-3">
+          <table class="table table-hover table-bordered w-100" id="dataTableLocal"></table>
+        </div>
+      </div>
+    </div>
+  </section>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DATATABLES -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- jquery validation -->
+    <script src="plugins/validate/jquery.validate.min.js"></script>
+    <script src="plugins/validate/additional-methods.min.js"></script>
+    <script src="plugins/sweetalert2.js"></script>
+    <script src="plugins/moment/moment.min.js"></script>
+    <script type="text/javascript" src="../plugins/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="src/eventLogos.js"></script>
+    <script src="plugins/qrcode.js"></script>
+    <script src="plugins/printThis.js"></script>
+    <script src="src/onsite/manualSync/load.js"></script>
+
+</body>
+
+</html>

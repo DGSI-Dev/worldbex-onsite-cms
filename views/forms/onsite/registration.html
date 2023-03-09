@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageName}}</title>
+    <link rel="icon" href="../{{logoText}}">
+    <!-- <link rel="stylesheet" href="../plugins/dist/css/adminlte.min.css"> -->
+    <link href="plugins/bootstrap/bootstrap.min.css" rel="stylesheet" >
+    <link href="plugins/fontawesome/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <style>
+      *{
+        font-family: 'Montserrat',
+        Helvetica
+        Arial
+        Lucida
+        sans-serif;
+      }
+
+      *{
+        font-family: 'Arial',
+        Helvetica
+        Arial
+        Lucida
+        sans-serif;
+      }
+
+      .cardhome{
+        transition: transform .2s;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: inset;
+      }
+      .cardhome:hover{
+        opacity: 0.8;
+        filter: alpha(opacity=80); /* For IE8 and earlier */
+        cursor: pointer;
+        -ms-transform: scale(1); /* IE 9 */
+        -webkit-transform: scale(1); /* Safari 3-8 */
+        transform: scale(1.1); 
+      }
+
+      .parallax {
+        /* The image used */
+        background-image: url("img/other/banner2.jpg");
+        /* Set a specific height */
+        margin-top: 70px; 
+        min-height: 400px; 
+        /* Create the parallax scrolling effect */
+        /* background-attachment: fixed; */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .post-slide{
+        border-radius: 10px;
+      }
+      .zoomNews{
+        transition: transform .2s;
+        overflow: hidden;
+        box-shadow: inset;
+      }
+      .zoomNews:hover{
+        opacity: 0.9;
+        filter: alpha(opacity=90); /* For IE8 and earlier */
+        -ms-transform: scale(1.05); /* IE 9 */
+        -webkit-transform: scale(1.05); /* Safari 3-8 */
+        transform: scale(1.05); 
+      }
+      .bookIcon:hover{
+        cursor: pointer;
+      }
+      .custombutton{
+        background-color: #df731b;
+      }
+      .custombutton:hover{
+        background-color: #c25a04;
+      }
+      .navbar-nav .nav-item:hover{
+        color: white;
+        background-color: #c25a047a;
+        border-radius: 20px;
+      }
+      
+      @media screen and (max-width: 767px) {
+        #topNav {
+          background: white;
+          /* border-bottom: 0.5px solid rgba(0,0,0, 0.2); */
+          /* border-bottom: 0.5px solid gray; */
+        }
+        .headerTitle{
+          margin-top: 30px;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        #topNav {
+          background: rgba(255, 255, 255, 0.6);
+          border-bottom: 0.5px solid rgba(0,0,0, 0.2);
+        }
+      }
+
+      .navbar-nav .nav-item .active{
+        background-color: white;
+        color: #df731b;
+        border-radius: 15px;
+      }
+      .navbar-nav .nav-item a{
+        color: white;
+      }
+      
+    </style>
+  </head>
+    
+  <body>
+
+    <nav class=" navbar navbar-expand " style="background-color:  #df731b;">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <img src="../{{logo}}" class="d-none d-sm-none d-md-flex" style="max-height: 4vh;" alt="">
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/onsite-guests">Guests</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link active" aria-current="page" href="/onsite-registration">Registration</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/onsite-manualsync">Manual Syncing</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/onsite-customprint">Manual Print</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="pt-4">
+      <div class="container headerTitle">
+        <center>
+          <div class="d-block d-md-none">
+            <img src="{{logo}}" alt="" style="width: 100%;">
+            <hr>
+          </div>
+          <img src="/img/raw/wbex-date.png" class="w-50" alt="">
+        </center>
+        <div class="my-3">
+          <div class="card">
+            <div class="card-body">
+              <center>
+                <h2>
+                  GUEST INFORMATION
+                  <div class="col-sm-6 mx-auto" style="border-bottom: solid #c75b03b9 3px; min-width: 200px; max-width: 300px "></div>
+                </h2>
+              </center>
+              <hr>
+              <form id="registration">
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label class="form-label">First Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" name="firstName" style="text-transform:capitalize"
+                        placeholder="First Name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label class="form-label">Last Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" name="lastName" style="text-transform:capitalize"
+                        placeholder="Last Name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label" for="mobileNumber">Mobile Number <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <select class="countryMobile form-control pl-2 pr-0" style="max-width: 110px;"></select>
+                      <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" maxlength="11"
+                        placeholder="10 digit number" aria-label="Mobile Number" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
+                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" required>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label class="form-label">Designation <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" name="designation" style="text-transform:capitalize"
+                        placeholder="Designation" required>
+                        
+                      <div class="form-check">
+                        <input class="form-check-input isStudent" id="isStudent" type="checkbox">
+                        <label class="form-check-label" for="isStudent">
+                          Student
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label class="form-label">Company <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" name="companyName" style="text-transform:capitalize" placeholder="Company"
+                        required>
+                    </div>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label for="">PRC License Number <span class="text-danger">*</span></label>
+                    <input type="text" name="prcNumber" class="form-control designation prcNumber" placeholder="PRC License Number"
+                      required>
+                    <div class="form-check">
+                      <input class="form-check-input noPrc" id="noPrc" type="checkbox">
+                      <label class="form-check-label" for="noPrc">
+                        No PRC Number
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <label for="">Expiry Date <span class="text-danger">*</span></label>
+                    <input type="text" name="prcExpiry" class="form-control" placeholder="Expiry Date" required>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <center>
+                      <h2>
+                        SURVEY
+                        <div class="col-sm-6 mx-auto" style="border-bottom: solid #c75b03b9 3px; min-width: 200px; max-width: 250px "></div>
+                      </h2>
+                    </center>
+                    <div class="row questions">
+                    </div>
+                  </div>
+                </div>
+              
+                <br>
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-lg clearButton mb-3 w-100 m-2" style="border: 1px solid #df731b">CLEAR</button>
+                  <button type="submit" class="btn btn-warning btn-lg w-100 m-2 custombutton text-white mb-3">SUBMIT</button>
+                </div>
+                <center>
+                </center>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- <hr>
+        <center><h3>Registered Guests</h3></center>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover table-bordered" id="dataTable"></table>
+        </div> -->
+      </div>
+      <footer class=" mb-3 bg-white">
+        <div class="container px-lg-5">
+          {{> eventLogos}}
+        </div>
+      </footer>
+    </section>
+    
+    <!-- Page Content-->
+
+    <!-- MODAL -->
+    <div id="modal-sticker" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sticker</h5>
+            <button type="button" class="close btn btn-sm btn-warning" data-dismiss="modal"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <center>
+              <div style="border: 1px solid #df731b; width: 80mm; height: 30mm;">
+                <div class="stickerDiv" 
+                  style="
+                    width: 100%;
+                    height: 30mm;
+                    padding: 10px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    align-content: center;
+                    justify-content: center;
+                    position: relative;
+                    display: grid;
+                    grid-template-columns: auto auto;
+                  "
+                >
+                <center>
+                  <div class="qrCode"></div>
+                  <div style="margin-top: -3mm;">
+                    <span class="stickerId"
+                      style="color: black; font-size: 8pt; line-height: 9pt; font-weight: bold; font-family: 'Arial', Helvetica Arial Lucida sans-serif; ">
+                      </span>
+                  </div>
+                </center>
+                  <div style="position: relative; text-align: left; padding-left: 3mm; width: 50mm;">
+                    <div style="line-height: 15pt">
+                      <span class="fullName" style="font-size: 14pt; line-height: 15pt; font-weight: bold; width: 100%; text-transform: capitalize;">Christopher Dungaran123</span>
+                    </div>
+                    <div style="line-height: 11pt">
+                      <span class="companyName" style="font-size: 10pt; line-height: 0mm; margin: 0; padding: 0;  text-transform: capitalize;">Dynamic Global Soft Inc. </span>
+                    </div>
+                    
+                    <div style="position: absolute; bottom: 1mm; left: 0; right: 0">
+                      <center>
+                        <div style="line-height: 8pt">
+                          <span style="font-size: 7pt; line-height: 5pt;">Powered By :</span> 
+                        </div>
+                        <div style="line-height: 10pt">
+                          <b style="font-size: 9pt; line-height: 10pt;">Dynamic Global Soft Inc.</b>
+                        </div>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </center>
+            <br>
+            <center>
+              <button type="submit" class="btn btn-warning printQR"><i class="fas fa-print"></i> PRINT</button>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div style="margin-bottom: 200px;"></div> -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- jquery validation -->
+    <script src="plugins/validate/jquery.validate.min.js"></script>
+    <script src="plugins/validate/additional-methods.min.js"></script>
+    <script src="plugins/sweetalert2.js"></script>
+    <script src="plugins/moment/moment.min.js"></script>
+    <script type="text/javascript" src="plugins/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="src/eventLogos.js"></script>
+    <script src="plugins/qrcode.js"></script>
+    <script src="plugins/printThis.js"></script>
+
+    <script src="src/onsite/registration/load.js"></script>
+    
+    
+  </body>
+</html>
