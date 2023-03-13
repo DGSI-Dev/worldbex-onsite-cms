@@ -99,10 +99,3 @@ function getPrize(indicatedSegment)
     endAudio.play();
   }
 }
-submitPrize(currentEventId, currentUserId, prizeSelections[0].id, "CLAIMED!")
-new bootstrap.Modal(document.getElementById('wonPrize')).show()
-$(".itemName").text("")
-
-let endAudio = new Audio('plugins/javascript-winwheel-2.8.0/success.mp3');
-endAudio.play();
-

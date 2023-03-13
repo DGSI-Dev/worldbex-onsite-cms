@@ -94,7 +94,7 @@ let loadPrizes = (eventId, areaCode) => {
       $.when(
         $.ajax("/src/survey/wheel.js"),
       ).then(function () {
-        // myWheel.show()
+        myWheel.show()
         Swal.close()
       })
     },
@@ -165,6 +165,7 @@ $.ajax({
 })
 
 let submitPrize = (eventId, qrCode, priceId, prizeWON) => {
+  console.log('triggered')
   $.ajax({
     type: 'POST',
     url: '/api/claimEventPrice',
